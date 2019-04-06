@@ -1,0 +1,50 @@
+[background-color="#01303a"]
+== Introduction
+
+=== Gradle, the basics
+
+[%step]
+* Automate execution of configurable tasks
+* Groovy and Kotlin build scripts
+* A Java API with a Kotlin and Groovy DSL on top
+* Work avoidance, dependency management etc...
+* Reusable functionality packaged as plugins
+
+image::gradle-task-dag.png[height=350px]
+
+=== A Java library
+
+[source,groovy]
+----
+plugins {
+   `java-library`
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies {
+   api("com.acme:foo:1.0")
+   implementation("com.zoo:monkey:1.1")
+}
+----
+
+=== A native app
+
+[source,groovy]
+----
+plugins {
+    `cpp-application`
+}
+
+application {
+    baseName = "my-app"
+}
+
+toolChains {
+    // ...
+}
+----
+

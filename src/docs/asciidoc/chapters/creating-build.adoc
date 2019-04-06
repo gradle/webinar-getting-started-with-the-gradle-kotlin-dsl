@@ -1,0 +1,186 @@
+
+[background-color="#01303a"]
+== Creating a Gradle Kotlin DSL build
+
+=== Creating a Gradle Kotlin DSL build
+
+* With Gradle locally installed
+* `gradle init`
+
+ASCIINEMA DEMO HERE
+
+=== Creating a Gradle Kotlin DSL build
+
+* From a Web UI
+* https://gradle-initializr.cleverapps.io/
+
+[source,text]
+----
+➜ curl https://gradle-initializr.cleverapps.io/starter.zip \
+    -d type=kotlin-application \
+    -d dsl=kotlin \
+    -d projectName=webinar-app \
+    -o starter.zip
+----
+
+WEBSITE & CURL CAST DEMO HERE
+
+=== Anatomy of the build
+
+[source,text]
+----
+.
+├── settings.gradle.kts
+├── build.gradle.kts
+├── gradlew
+├── gradlew.bat
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+└── src
+    ├── main
+    │   └── kotlin
+    │       └── *
+    └── test
+        └── kotlin
+            └── *
+----
+
+[transition=none]
+=== Anatomy of the build
+
+[source,text]
+----
+.
+├── settings.gradle.kts                 <=
+├── build.gradle.kts
+├── gradlew
+├── gradlew.bat
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+└── src
+    ├── main
+    │   └── kotlin
+    │       └── *
+    └── test
+        └── kotlin
+            └── *
+----
+
+
+[transition=none]
+=== `settings.gradle.kts`
+
+[source,kotlin]
+----
+rootProject.name = "webinar-app"
+----
+
+[transition=none]
+=== Anatomy of the build
+
+[source,text]
+----
+.
+├── settings.gradle.kts
+├── build.gradle.kts                    <=
+├── gradlew
+├── gradlew.bat
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+└── src
+    ├── main
+    │   └── kotlin
+    │       └── *
+    └── test
+        └── kotlin
+            └── *
+----
+
+[transition=none]
+=== `build.gradle.kts`
+
+[source,kotlin]
+----
+plugins {
+    id("org.jetbrains.kotlin.jvm") version "1.3.21"
+    application
+}
+repositories {
+    jcenter()
+}
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+}
+application {
+    mainClassName = "webinar.app.AppKt"
+}
+----
+
+
+[transition=none]
+=== Anatomy of the build
+
+[source,text]
+----
+.
+├── settings.gradle.kts
+├── build.gradle.kts
+├── gradlew                             <=
+├── gradlew.bat                         <=
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar          <=
+│       └── gradle-wrapper.properties   <=
+└── src
+    ├── main
+    │   └── kotlin
+    │       └── *
+    └── test
+        └── kotlin
+            └── *
+----
+
+[transition=none]
+=== Anatomy of the build
+
+[source,text]
+----
+.
+├── settings.gradle.kts
+├── build.gradle.kts
+├── gradlew
+├── gradlew.bat
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+└── src
+    ├── main
+    │   └── kotlin
+    │       └── *                       <=
+    └── test
+        └── kotlin
+            └── *                       <=
+----
+
+=== Using the build
+
+[source,text]
+----
+➜ ./gradlew run
+
+> Task :run
+Hello world.
+
+BUILD SUCCESSFUL in 0s
+2 actionable tasks: 2 executed
+----
+

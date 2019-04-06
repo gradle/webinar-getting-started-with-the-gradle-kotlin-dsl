@@ -10,33 +10,42 @@ ifndef::sourcedir[:sourcedir: ../java]
 :title-slide-transition-speed: fast
 :icons: font
 
-= : Dependency Management with Gradle
+= : Getting started with the Gradle Kotlin DSL
 
-+++<h2>+++
-Part 1 - Fundamentals
-+++</h2>+++
-
-Cédric Champeau (@CedricChampeau) & Louis Jacomet (@ljacomet) - Gradle Inc.
+Paul Merlin (@eskat0s) & Rodrigo B. de Oliveira (@rodrigobamboo) - Gradle Inc.
 
 == Who are we?
 
 image::who-s-who.png[height=250,width=520]
 
-Dependency management team
+Gradle Kotlin DSL Team
+
 
 include::chapters/about-gradle.adoc[]
 
-include::chapters/intro.adoc[]
 
 [background-color="#01303a"]
-== Demo
+== Agenda
 
-include::chapters/repositories.adoc[]
+* Creating a Gradle Kotlin DSL build
+* Customizing the build
+* Organizing build logic
+* Authoring plugins and DSLs
 
-include::chapters/core-concepts.adoc[]
 
-include::chapters/controlling-dependency-versions.adoc[]
+include::chapters/introduction.adoc[]
 
-include::chapters/structuring.adoc[]
+include::chapters/creating-build.adoc[]
+
+include::chapters/customizing-build.adoc[]
+
+include::chapters/organizing-build.adoc[]
+
+include::chapters/authoring-plugins.adoc[]
 
 include::chapters/wrapup.adoc[]
+
+
+[background-color="#01303a"]
+== Thank you!
+
