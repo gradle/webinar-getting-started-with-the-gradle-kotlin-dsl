@@ -1,0 +1,42 @@
+:revnumber: {project-version}
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../java]
+:navigation:
+:menu:
+:status:
+:title-slide-background-image: title.jpeg
+:title-slide-transition: zoom
+:title-slide-transition-speed: fast
+:icons: font
+
+= : Dependency Management with Gradle
+
++++<h2>+++
+Part 1 - Fundamentals
++++</h2>+++
+
+Cédric Champeau (@CedricChampeau) & Louis Jacomet (@ljacomet) - Gradle Inc.
+
+== Who are we?
+
+image::who-s-who.png[height=250,width=520]
+
+Dependency management team
+
+include::chapters/about-gradle.adoc[]
+
+include::chapters/intro.adoc[]
+
+[background-color="#01303a"]
+== Demo
+
+include::chapters/repositories.adoc[]
+
+include::chapters/core-concepts.adoc[]
+
+include::chapters/controlling-dependency-versions.adoc[]
+
+include::chapters/structuring.adoc[]
+
+include::chapters/wrapup.adoc[]

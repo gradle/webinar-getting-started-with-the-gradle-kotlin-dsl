@@ -1,0 +1,64 @@
+[background-color="#01303a"]
+== Why dependency management?
+
+=== A long time ago ...
+
+[source,bash]
+----
+> javac -d out *.java
+> cd out/
+> jar cf ../../lib/project1.jar *.class
+> cd ../../project2
+> javac -cp ../lib/project1.jar -d out *.class
+----
+
+=== Then came tools
+
+* Helped you build and package
+* Did not handle dependencies
+** Download jars from project website
+** Lived in a `lib` directory or equivalent
+** Often saved next to code in source control
+
+=== Source vs published
+
+* Sources
+** (mostly) reliable
+** (often) slow
+** hard to temper with
+** hard to version
+
+=== Source vs published
+
+* Binaries
+** Stable
+** Fast (pre-built)
+** Requires trusted sources
+** Not always metadata
+
+=== Growing ecosystem
+
+With the growing popularity of Java and the growth of its ecosystem,
+managing all dependencies of a project turns into a dependency chase.
+
+=== Thus dependency management ...
+
+* Ivy or Maven would take care of your dependencies
+** Libraries have known coordinates
+** Published to repositories, with metadata in addition of the binary
+** Automated the transitive aspect of dependency management
+
+=== Metadata: Maven != Maven Central
+
+* Maven: a build tool
+* Maven *POM*: a metadata format
+* Maven **repositories**: Places where you can find binaries, with Maven metadata
+
+=== And Gradle joins the party
+
+* Compatible with all of the previous options
+** `lib` or custom repositories
+** Ivy metadata
+** Maven metadata
+** Gradle Module Metadata (https://blog.gradle.org/gradle-metadata-1.0[since 5.3])
+** and more ...

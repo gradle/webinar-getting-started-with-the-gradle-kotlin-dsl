@@ -1,0 +1,174 @@
+[background-color="#01303a"]
+== Core concepts
+
+=== Definitions
+
+
+* *Module*
+** A piece of software that evolves over time
+** Has a group, name and version to identify it
+** Example: `org.slf4j:slf4j-api:1.7.2`
+* *Configuration* +
+In the context of dependency management, and for most users:
+** Named set of dependencies
+** Provides access to resolved modules and their artifacts
+** Example: `implementation`
+
+=== API and implementation
+
+image::configurations/bucket.png[width=100%, height=100%]
+
+=== More bucket configurations
+
+image::configurations/bucket_2.png[width=100%, height=100%]
+
+=== Bucket configurations relationship
+
+image::configurations/bucket_3.png[width=100%, height=100%]
+
+=== API vs implementation
+
+* To _build_ a module, you need:
+** `api`, `implementation` and `compileOnly` dependencies
+* To _run_ a module, you need:
+** `api`, `implementation` and `runtimeOnly` dependencies
+
+=== Classpath configurations
+
+image::configurations/classpath.png[width=100%, heighth=100%]
+
+=== API vs implementation transitively
+
+* To _build against_ a module, you need:
+** transitive `api` dependencies
+* To _run against_ a module, you need:
+** transitive `api`, `implementation` and `runtimeOnly` dependencies
+
+=== Elements configurations
+
+image::configurations/complete.png[width=100%, heighth=100%]
+
+=== Configurations
+
+* 3 kinds of configurations
+
+** "buckets" of dependencies
+** resolvable configurations
+** consumable configurations
+
+=== Buckets of dependencies
+
+
+* A named list of dependencies
+* `canBeConsumed=false` +
+  `canBeResolved=false`
+
+=== Resolvable configurations
+
+
+* Represents a _consumer_
+* For a specific _usage_ (compiling, runtime, ...)
+* Extends from one or more bucket(s)
+* `canBeConsumed=false` +
+  `canBeResolved=true`
+
+=== Consumable configurations
+
+
+* Represents a variant of a _producer_
+* Attaches _artifacts_
+* Extends from one or more bucket
+* `canBeConsumed=true` +
+  `canBeResolved=false`
+
+=== Matching consumers with producers
+
+Gradle needs a way to perform the matching between consumers and producers.
+
+Attributes and variants are the answer.
+
+=== More definitions
+
+* *Attribute*
+** Named
+** Typed
+** Can have compatibility and disambiguation rules
+* *Variant*
+** A consumable form of a module
+** Declare artifacts and / or dependencies
+** Identified by its attributes and their values
+
+=== Compilation against project
+
+image::consumer/compile1.png[width=100%, heighth=100%]
+
+=== Compilation against project
+
+image::consumer/compile2.png[width=100%, heighth=100%]
+
+=== Compilation against project
+
+image::consumer/compile3.png[width=100%, heighth=100%]
+
+=== Compilation against project API
+
+image::consumer/compileapi1.png[width=100%, heighth=100%]
+
+=== Compilation against project API
+
+image::consumer/compileapi2.png[width=100%, heighth=100%]
+
+=== Compilation against project API
+
+image::consumer/compileapi3.png[width=100%, heighth=100%]
+
+=== Runtime against project
+
+image::consumer/runtime1.png[width=100%, heighth=100%]
+
+=== Runtime against project
+
+image::consumer/runtime2.png[width=100%, heighth=100%]
+
+=== Runtime against project
+
+image::consumer/runtime3.png[width=100%, heighth=100%]
+
+=== Runtime against project
+
+image::consumer/runtime4.png[width=100%, heighth=100%]
+
+=== Against external dependency
+
+image::consumer/external.png[width=100%, heighth=100%]
+
+=== Gradle attributes
+
+* `org.gradle.usage`: indicates the _usage_ of a variant
+** Example: `java-api` or `java-runtime`
+* `org.gradle.category`: indicates the _category_ of a component
+** Example: `library` or `platform`
+* `org.gradle.dependency.bundling`: indicates how _dependencies_ are handled
+** Example: `regular` or `embedded`
+
+=== Gradle JVM attributes
+
+* `org.gradle.jvm.version`: indicates the minimal JVM version compatibility
+** Example: `6`, `9` or `12`
+
+=== Usage of attributes
+
+* Can be declared on configurations
+** Defines an _expected_ value on resolvable
+** Defines an _exposed_ value on consumable
+* Can be declared on dependencies
+** Overrides the configuration value (if set)
+* Can be declared when retrieving artifact
+
+=== Semantics and dependencies
+
+Gradle has a strong modelling of dependencies:
+
+* Semantic difference between compilation and runtime
+* Semantic difference between building a library and building _against_ a library
+* Ability for a module to produce more than one variant

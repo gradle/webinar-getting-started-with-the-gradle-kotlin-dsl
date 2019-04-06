@@ -1,0 +1,26 @@
+[background-color="#01303a"]
+== Wrap up
+
+=== Documentation links
+
+* https://docs.gradle.org/current/userguide/introduction_dependency_management.html[Dependency management section]
+* https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_repositories[Declaring repositories]
+* https://docs.gradle.org/current/userguide/dependency_cache.html#dependency_cache[Understanding the dependency cache]
+* https://docs.gradle.org/current/userguide/declaring_dependencies.html#sub:declaring_dependency_rich_version[Rich version constraints]
+* https://scans.gradle.com[Build scans]
+
+* Request a personal demo of Gradle Enterprise at https://gradle.com/enterprise/contact
+
+=== Sneak peak at Part 2
+
+* Handling version conflicts
+* Dealing with bad metadata
+* Dependency alignment
+* Capabilities
+* Resolution rules
+* ...
+
+To be confirmed: June 6th
+
+[background-color="#01303a"]
+== Questions?

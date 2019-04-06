@@ -1,0 +1,24 @@
+[background-color="#01303a"]
+== What is Gradle?
+
+=== Gradle's purpose
+
+Gradle is a build and automation tool.
+
+* JVM based
+* Implemented in Java
+* 100% Free Open Source - Apache Standard License 2.0
+
+=== Agnostic Build System
+
+* Java ecosystem
+** Groovy, Kotlin, Scala, ...
+* Native ecosystem
+** C, C++, Swift, ...
+* Android
+* Misc
+** Python, Go, Asciidoctor, ...
+
+=== Gradle Enterprise
+
+image::gradle-enterprise.png[width=80%, height=80%]

@@ -1,0 +1,72 @@
+[background-color="#01303a"]
+== Structuring your build
+
+=== Use case: commons dependencies
+
+* Often subprojects in a repository have to share the same versions
+* How can we:
+** Define common dependency versions
+** Share the result
+
+=== Meet the Java Platform plugin
+
+* A Java Platform defines a _set of dependency constraints_
+* May have different _api_ and _runtime_ constraints
+* _Optionally_ defines dependencies
+
+=== Step 1: define a Java Platform subproject
+
+.platform/build.gradle.kts
+[source,kotlin]
+----
+plugins {
+   `java-platform`
+}
+
+dependencies {
+    constraints {
+       api("org.slf4j:slf4j-api:1.7.26")
+       api("org.slf4j:slf4j-simple:1.7.26")
+    }
+}
+----
+
+=== Step 2: refactor subprojects
+
+.cli/build.gradle.kts
+[source,kotlin]
+----
+dependencies {
+   api(platform(project(":platform")))
+
+   implementation("org.slf4j:slf4j-api") // <-- no version here
+}
+----
+
+=== Step 3: extract versions
+
+.platform/build.gradle.kts
+[source,kotlin]
+----
+plugins {
+   `java-platform`
+}
+
+// May be moved to `buildSrc`
+object Deps {
+   val slf4jVersion = "1.7.26"
+}
+
+dependencies {
+    constraints {
+       api("org.slf4j:slf4j-api:${Deps.slf4jVersion}")
+       api("org.slf4j:slf4j-simple:${Deps.slf4jVersion}")
+    }
+}
+----
+
+=== Publication
+
+* When published, platforms are similar to Maven BOMs
+* Actually _published as BOMs_ for Maven consumers
+* and published "as is" for Gradle consumers

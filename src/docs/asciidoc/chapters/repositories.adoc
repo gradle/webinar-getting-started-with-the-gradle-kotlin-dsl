@@ -1,0 +1,28 @@
+[background-color="#01303a"]
+== Getting dependencies
+
+=== From a repository to your machine
+
+Gradle attaches importance to the source of a dependency, its origin repository.
+
+Gradle has lots of smarts in order to optimise the downloading of files.
+
+=== Repositories
+
+* Order of repositories _is important_
+* Use repository filtering for partitioning sources
+* Avoid _mavenLocal()_
+** Not strictly a repository, but a cache for Maven
+** Sometimes contains partial module data, this will trip Gradle
+* Metadata and artifacts downloaded concurrently
+
+=== How Gradle searches for binaries
+
+* Gradle _knows_ where an artifact comes from
+* Get the SHA1 of the artifact (GET or HEAD)
+* Looks in its dependency cache if something at the same GAV has the same hash
+** If so, uses it
+* Can leverage local maven repository content instead of downloading
+** That is transparent, and different than having `mavenLocal()` declared as a repository
+
+Consequence: if you get a file from _Maven Central_, then you change the repository to _JCenter_, if the artifacts are the same, downloaded only once.
