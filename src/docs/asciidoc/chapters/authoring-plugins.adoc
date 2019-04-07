@@ -3,4 +3,6 @@
 
 === Authoring plugins and DSLs
 
+* Authoring plugins that take advantage of the Gradle Kotlin DSL
+* Authoring DSLs that play well with both Kotlin and Groovy
 

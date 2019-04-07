@@ -4,5 +4,8 @@
 === Customizing the build
 
 * plugins contributing extensions, dsl, tasks etc..
-
+* configuring extensions
+* configuring tasks
+* dependency versions
+* Using non statically typed APIs and DSLs from a statically typed language
 

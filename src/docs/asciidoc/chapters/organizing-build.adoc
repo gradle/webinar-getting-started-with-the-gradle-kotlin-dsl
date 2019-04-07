@@ -3,3 +3,12 @@
 
 === Organizing build logic
 
+* Understanding patterns for organizing build logic
+* multi-project builds
+** cross-configuration
+* local function
+* buildSrc
+** extracting function to buildSrc
+** extracting dependency versions to buildSrc
+** extracting plugin to buildSrc
+
