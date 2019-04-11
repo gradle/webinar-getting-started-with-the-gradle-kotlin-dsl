@@ -16,7 +16,7 @@ Paul Merlin (@eskat0s) & Rodrigo B. de Oliveira (@rodrigobamboo) - Gradle Inc.
 
 == Who are we?
 
-image::who-s-who.png[height=250,width=520]
+image::who-s-who.png[height=250,width=586]
 
 Gradle Kotlin DSL Team
 
