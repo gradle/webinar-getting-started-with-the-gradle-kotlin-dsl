@@ -9,16 +9,5 @@
 * link:https://gradle.com/blog/dependency-management-with-gradle-fundamentals/[Dependency Management with Gradle Part 1 – Fundamentals]
 
 
-=== Sneak peak at Part 2
-
-* Handling version conflicts
-* Dealing with bad metadata
-* Dependency alignment
-* Capabilities
-* Resolution rules
-* ...
-
-To be confirmed: June 6th
-
 [background-color="#01303a"]
 == Questions?
