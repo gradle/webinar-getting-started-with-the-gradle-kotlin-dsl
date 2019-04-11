@@ -9,6 +9,12 @@
 
 ASCIINEMA DEMO HERE
 
+[.notes]
+--
+* `init` gives several templates to choose from
+* here we choose a Kotlin application using the Gradle Kotlin DSL
+--
+
 === Creating a Gradle Kotlin DSL build
 
 * From a Web UI
@@ -29,6 +35,14 @@ ASCIINEMA DEMO HERE
 ----
 
 WEBSITE & CURL CAST DEMO HERE
+
+[.notes]
+--
+* the same can be done without having Gradle installed
+* by https://gradle-initializr.cleverapps.io/
+* which basically drives `gradle init`
+* and again we choose a Kotlin application using the Gradle Kotlin DSL with latest Gradle
+--
 
 === Anatomy of the build
 
@@ -54,11 +68,14 @@ WEBSITE & CURL CAST DEMO HERE
 
 [.notes]
 --
-* .kts script file extension
+* In both cases the output is the same
+* the first thing to notice is the .kts script file extension
+* KTS stands for KoTlin Script
+* and that's how you opt-in to the Gradle Kotlin DSL
 --
 
 [transition=none]
-=== Anatomy of the build
+=== The settings script
 
 [source,text]
 ----
@@ -91,13 +108,13 @@ rootProject.name = "webinar-app"
 
 [.notes]
 --
-* settings for the whole build
-* its project structure
+* controls the settings for the whole build
+* the most common thing to control is the project structure
 * other global build configurations such as build cache, where to find plugins, etc
 --
 
 [transition=none]
-=== Anatomy of the build
+=== The root project build script
 
 [source,text]
 ----
@@ -144,14 +161,15 @@ application {
 [.notes]
 --
 * the root project build script
-* configures a Kotlin JVM application
+* we say `root` because in fact you could have many, in this case we have just one
+* it configures a Kotlin JVM application
 * sets up the repository where to find the dependencies
 * sets up the dependencies, if you want to know more about this important topic see the Dependency Management Fundamentals webinar
 * sets up the application entry point
 --
 
 [transition=none]
-=== Anatomy of the build
+=== The Gradle wrapper
 
 [source,text]
 ----
@@ -182,7 +200,7 @@ application {
 --
 
 [transition=none]
-=== Anatomy of the build
+=== The project sources
 
 [source,text]
 ----
@@ -206,7 +224,7 @@ application {
 
 [.notes]
 --
-* and the source code for the application and tests in the standard layout
+* and as you might expect, the source code for the application and tests in the standard layout
 --
 
 === Using the build
@@ -226,6 +244,10 @@ BUILD SUCCESSFUL in 0s
 
 [.notes]
 --
+* record the bootstrapping process
+** download the Gradle distro
+** start daemon
+** >> run again with `./gradlew check` to show it's cached
 * and here we just use the Gradle wrapper to execute the `run` task provided by the `application` plugin
 --
 

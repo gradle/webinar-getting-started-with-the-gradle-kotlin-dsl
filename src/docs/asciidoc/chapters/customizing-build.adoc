@@ -29,6 +29,7 @@ application {
 * with the JVM we can achieve that by using the `-Xmx` command line argument
 * we should be able to tell the `application` plugin to do just that
 * so let's take a closer look at our build script and its `application` block
+* >> transitions to IDE here with the script already open
 * that's what's called an extension configuration block
 * in general, extensions are how plugins extend the Gradle DSL
 * in our build, the application plugin is extending the Gradle DSL with the application extension
@@ -67,7 +68,7 @@ application {
 === Running the app with the new arguments
 
 * demo with ./gradlew run -i
-** highligh the new argument
+** highligh the new `-Xmx4m` argument
 * demo ./gradlew install
 ** open script and highlight new argument
 
@@ -107,23 +108,33 @@ application {
 ** we want to configure how warnings are handled
 ** >> type `warn` wait for popup
 ** >> select `allWarningsAsErrors`
+** >> check the docs (^J)
 ** >> assign true
 ** That should be enough
 --
 
-=== Running the app with new compiler configuration
+=== Building the app with the new compiler configuration
 
 * demo introducing warning by duplicating `return "Hello world"` line
-** navigate to App
-** duplicate line
-** run anything `gradle run`
-** highlight warning output
-** fix the code
-** run again
+** >> navigate to App
+** >> duplicate line
+** >> run anything `gradle run`
+** >> highlight warning output
+** >> fix the code
+** >> run again
 
-=== Customizing the build
+=== What we learned so far
 
-* Using non statically typed APIs and DSLs from a statically typed language
+* we can change the behavior of the build by
+** configuring extensions and tasks
+** both contributed by plugins
+** in other words, plugins extend the Gradle DSL which can then be configured in scripts like the one we just saw
+
+[.notes]
+--
+--
+
+=== Going further: modularizing
 
 [.notes]
 --
@@ -132,12 +143,18 @@ application {
 **  duplicate `compileKotlin` configuration logic
 * dedupe the logic by moving the duplicated compileTask configuration into the root build
 ** cross `subprojects` configuration with `val compileKotlin by ...`
+--
+
+=== Going further: interoperability
+
+* Using non statically typed APIs and DSLs from a statically typed language
+
+[.notes]
+--
 * introduce company wide Groovy script that validates license headers
 ** Groovy script provides extension to configure license (defaults to LGPL)
 ** `app` needs to configure script to use GPL
 ** `licensing` extension will be untyped because Groovy script type
 ** use `withGroovyBuilder` to set the license (an enum that can be `setProperty("license", "GPL")` from `app`
 --
-
-
 
