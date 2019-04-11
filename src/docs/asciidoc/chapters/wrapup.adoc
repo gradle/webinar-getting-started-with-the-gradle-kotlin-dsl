@@ -3,13 +3,11 @@
 
 === Documentation links
 
-* https://docs.gradle.org/current/userguide/introduction_dependency_management.html[Dependency management section]
-* https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_repositories[Declaring repositories]
-* https://docs.gradle.org/current/userguide/dependency_cache.html#dependency_cache[Understanding the dependency cache]
-* https://docs.gradle.org/current/userguide/declaring_dependencies.html#sub:declaring_dependency_rich_version[Rich version constraints]
-* https://scans.gradle.com[Build scans]
+* link:https://docs.gradle.org/current/userguide/kotlin_dsl.html[Kotlin DSL Primer]
+* link:https://guides.gradle.org/migrating-build-logic-from-groovy-to-kotlin/[Kotlin DSL Migration Guide]
+* link:https://docs.gradle.org/current/userguide/userguide.html[Gradle User Manual]
+* link:https://gradle.com/blog/dependency-management-with-gradle-fundamentals/[Dependency Management with Gradle Part 1 – Fundamentals]
 
-* Request a personal demo of Gradle Enterprise at https://gradle.com/enterprise/contact
 
 === Sneak peak at Part 2
 
