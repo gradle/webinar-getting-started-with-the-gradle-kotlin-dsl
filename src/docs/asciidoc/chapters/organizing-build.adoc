@@ -4,11 +4,30 @@
 === Organizing build logic
 
 * Understanding patterns for organizing build logic
-* multi-project builds
-** cross-configuration
-* local function
+* cross-configuration
 * buildSrc
-** extracting function to buildSrc
-** extracting dependency versions to buildSrc
 ** extracting plugin to buildSrc
+** build logic in buildSrc can be tested
+* sharing build logic between builds
+
+[.notes]
+--
+* build script logic can get unwieldy with conventions for Kotlin, Java, Scala, Groovy
+** extract convention plugin into `buildSrc/src/main/kotlin/kotlin-conventions.gradle.kts`
+*** setup `buildSrc` with `kotlin-dsl` plugin
+*** move `kotlin("jvm")` plugin dependency to `buildSrc` / `dependencies`
+*** create `src/main/kotlin/kotlin-conventions.gradle.kts`
+*** plugins block with `kotlin("jvm")` plugin
+*** move `compileKotlin` configuration into `kotlin-conventions`
+*** simplify script plugin with type-safe accessor
+*** `subprojects { apply(plugin = "kotlin-conventions") }` in root
+*** demonstrate introducing warning and failing the build still works
+* quick demo testing buildSrc
+* sharing the plugin with a wider audience
+** extract plugin to separate build
+** to consume the plugin there are two options
+*** include build
+*** get the plugin from a repository
+--
+
 

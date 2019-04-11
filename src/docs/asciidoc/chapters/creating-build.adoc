@@ -16,11 +16,16 @@ ASCIINEMA DEMO HERE
 
 [source,text]
 ----
-➜ curl https://gradle-initializr.cleverapps.io/starter.zip \
+➜ mkdir webinar-app \
+    && cd webinar-app \
+    && curl https://gradle-initializr.cleverapps.io/starter.zip \
     -d type=kotlin-application \
     -d dsl=kotlin \
     -d projectName=webinar-app \
-    -o starter.zip
+    -d gradleVersion=5.3.1 \
+    -o webinar-app.zip \
+    && unzip -o webinar-app.zip \
+    && rm webinar-app.zip
 ----
 
 WEBSITE & CURL CAST DEMO HERE
@@ -46,6 +51,11 @@ WEBSITE & CURL CAST DEMO HERE
         └── kotlin
             └── *
 ----
+
+[.notes]
+--
+* .kts script file extension
+--
 
 [transition=none]
 === Anatomy of the build
@@ -78,6 +88,13 @@ WEBSITE & CURL CAST DEMO HERE
 ----
 rootProject.name = "webinar-app"
 ----
+
+[.notes]
+--
+* settings for the whole build
+* its project structure
+* other global build configurations such as build cache, where to find plugins, etc
+--
 
 [transition=none]
 === Anatomy of the build
@@ -124,6 +141,14 @@ application {
 }
 ----
 
+[.notes]
+--
+* the root project build script
+* configures a Kotlin JVM application
+* sets up the repository where to find the dependencies
+* sets up the dependencies, if you want to know more about this important topic see the Dependency Management Fundamentals webinar
+* sets up the application entry point
+--
 
 [transition=none]
 === Anatomy of the build
@@ -148,6 +173,14 @@ application {
             └── *
 ----
 
+[.notes]
+--
+* the Gradle wrapper is a way for a build to declare/specify the version of Gradle it uses
+* the script will automatically download the declared Gradle distribution
+* makes it easy to get the build up and running (either in CI or some other developer's machine)
+* only requires a JVM to bootstrap the whole build
+--
+
 [transition=none]
 === Anatomy of the build
 
@@ -171,6 +204,11 @@ application {
             └── *                       <=
 ----
 
+[.notes]
+--
+* and the source code for the application and tests in the standard layout
+--
+
 === Using the build
 
 [source,text]
@@ -183,4 +221,11 @@ Hello world.
 BUILD SUCCESSFUL in 0s
 2 actionable tasks: 2 executed
 ----
+
+<demo here>
+
+[.notes]
+--
+* and here we just use the Gradle wrapper to execute the `run` task provided by the `application` plugin
+--
 

@@ -1,8 +1,30 @@
 [background-color="#01303a"]
-== Authoring plugins and DSLs
+== Authoring plugins
 
-=== Authoring plugins and DSLs
+=== Sharing plugins with a wider audience
 
-* Authoring plugins that take advantage of the Gradle Kotlin DSL
-* Authoring DSLs that play well with both Kotlin and Groovy
+* Authoring DSLs that play well with both Kotlin, Groovy and other JVM languages
+* Authoring plugins that can be used across Gradle versions
+[.notes]
+--
+* consumer languages
+** diverse build script DSLs
+** diverse plugin implementation languages
+** common denominator is static typing, applicable to every JVM language
+*** it's always easier to use statically typed APIs from dynamically typed languages than the other way around
+** prefer exposing statically typed APIs over dynamically or unityped APIs (e.g. using Object)
+*** >> show 3 snippets: good (2 typed overloads, enum and string), bad (single Object taking function)
+** prefer Gradle types over language specific types
+*** e.g. org.gradle.api.Action<T> over groovy.lang.Closure or kotlin.Function
+*** >> show 3 snippets: good, kotlin bad, groovy ugly
+* consumer Gradle versions
+** always start with the latest
+*** in order to take advantage of all the goodness
+*** apply best practices (see the guides)
+** introduce cross-version testing
+*** can be as simple as junit parameterized tests driving TestKit
+*** add previous version to the test matrix incrementally
+*** Fix as needed, stop when satisfied or overwhelmed
+--
+
 
