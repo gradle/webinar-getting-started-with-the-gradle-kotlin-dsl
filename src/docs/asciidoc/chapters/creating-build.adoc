@@ -20,6 +20,20 @@ ASCIINEMA DEMO HERE
 * From a Web UI
 * https://gradle-initializr.cleverapps.io/
 
+WEBSITE & CURL CAST DEMO HERE
+
+[.notes]
+--
+* the same can be done without having Gradle installed
+* by https://gradle-initializr.cleverapps.io/
+* which basically drives `gradle init`
+* and again we choose a Kotlin application using the Gradle Kotlin DSL with latest Gradle
+--
+
+=== Creating a Gradle Kotlin DSL build
+
+One-liner without Gradle installed
+
 [source,text]
 ----
 ➜ mkdir webinar-app \
@@ -34,15 +48,6 @@ ASCIINEMA DEMO HERE
     && rm webinar-app.zip
 ----
 
-WEBSITE & CURL CAST DEMO HERE
-
-[.notes]
---
-* the same can be done without having Gradle installed
-* by https://gradle-initializr.cleverapps.io/
-* which basically drives `gradle init`
-* and again we choose a Kotlin application using the Gradle Kotlin DSL with latest Gradle
---
 
 === Anatomy of the build
 
@@ -74,13 +79,12 @@ WEBSITE & CURL CAST DEMO HERE
 * and that's how you opt-in to the Gradle Kotlin DSL
 --
 
-[transition=none]
 === The settings script
 
 [source,text]
 ----
 .
-├── settings.gradle.kts                 <=
+├── settings.gradle.kts                 ⬅
 ├── build.gradle.kts
 ├── gradlew
 ├── gradlew.bat
@@ -98,7 +102,6 @@ WEBSITE & CURL CAST DEMO HERE
 ----
 
 
-[transition=none]
 === `settings.gradle.kts`
 
 [source,kotlin]
@@ -113,14 +116,13 @@ rootProject.name = "webinar-app"
 * other global build configurations such as build cache, where to find plugins, etc
 --
 
-[transition=none]
 === The root project build script
 
 [source,text]
 ----
 .
 ├── settings.gradle.kts
-├── build.gradle.kts                    <=
+├── build.gradle.kts                    ⬅
 ├── gradlew
 ├── gradlew.bat
 ├── gradle
@@ -136,7 +138,6 @@ rootProject.name = "webinar-app"
             └── *
 ----
 
-[transition=none]
 === `build.gradle.kts`
 
 [source,kotlin]
@@ -168,7 +169,6 @@ application {
 * sets up the application entry point
 --
 
-[transition=none]
 === The Gradle wrapper
 
 [source,text]
@@ -176,12 +176,12 @@ application {
 .
 ├── settings.gradle.kts
 ├── build.gradle.kts
-├── gradlew                             <=
-├── gradlew.bat                         <=
+├── gradlew                             ⬅
+├── gradlew.bat                         ⬅
 ├── gradle
 │   └── wrapper
-│       ├── gradle-wrapper.jar          <=
-│       └── gradle-wrapper.properties   <=
+│       ├── gradle-wrapper.jar          ⬅
+│       └── gradle-wrapper.properties   ⬅
 └── src
     ├── main
     │   └── kotlin
@@ -199,7 +199,6 @@ application {
 * only requires a JVM to bootstrap the whole build
 --
 
-[transition=none]
 === The project sources
 
 [source,text]
@@ -216,10 +215,10 @@ application {
 └── src
     ├── main
     │   └── kotlin
-    │       └── *                       <=
+    │       └── *                       ⬅
     └── test
         └── kotlin
-            └── *                       <=
+            └── *                       ⬅
 ----
 
 [.notes]
