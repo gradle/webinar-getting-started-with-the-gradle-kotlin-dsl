@@ -1,30 +1,148 @@
 [background-color="#01303a"]
 == Authoring plugins
 
-=== Sharing plugins with a wider audience
+=== Authoring plugins
 
-* Authoring DSLs that play well with both Kotlin, Groovy and other JVM languages
-* Authoring plugins that can be used across Gradle versions
+*Sharing plugins with a wider audience*
+
+[%step]
+* DSLs that play well with both Kotlin, Groovy and other JVM languages
+* Plugins that can be used across Gradle versions
+
+=== DSLs that play well with JVM languages
+
+[%step]
+* Diverse build script DSLs languages - Kotlin, Groovy
+* Diverse plugin implementation languages - any JVM language
+* Common denominator is *static typing*
+* Applicable to every JVM language
+* *It's always easier to use statically typed APIs from dynamically typed languages than the other way around*
+
+=== DSLs that play well with JVM languages
+
+*Prefer exposing statically typed APIs over dynamically or unityped APIs*
+
+[source,kotlin]
+----
+enum class MyOption { NONE, FEW, LOTS, ALL }
+
+// The good
+interface MyDslType {
+
+    fun doSomethingOn(option: MyOption)
+
+    fun doSomethingOn(option: String) =
+        doSomethingOn(MyOption.valueOf(option.toUpperCase()))
+}
+
+// The bad
+interface MyDslType {
+    fun doSomethingOn(option: Any)
+}
+----
+
+
+=== DSLs that play well with JVM languages
+
+*Prefer Gradle types over language specific types*
+
+[source,java]
+----
+interface MyDslType {
+    // The good
+    void doThis(org.gradle.api.Action<Type> block);
+}
+----
+
+[source,kotlin]
+----
+interface MyDslType {
+    // The bad
+    fun doThis(block: Typed.() -> Unit)
+}
+----
+
+[source,groovy]
+----
+interface MyDslType {
+    // The ugly
+    def doThis(groovy.lang.Closure block)
+}
+----
+
 [.notes]
 --
-* consumer languages
-** diverse build script DSLs
-** diverse plugin implementation languages
-** common denominator is static typing, applicable to every JVM language
-*** it's always easier to use statically typed APIs from dynamically typed languages than the other way around
-** prefer exposing statically typed APIs over dynamically or unityped APIs (e.g. using Object)
-*** >> show 3 snippets: good (2 typed overloads, enum and string), bad (single Object taking function)
 ** prefer Gradle types over language specific types
 *** e.g. org.gradle.api.Action<T> over groovy.lang.Closure or kotlin.Function
 *** >> show 3 snippets: good, kotlin bad, groovy ugly
-* consumer Gradle versions
-** always start with the latest
-*** in order to take advantage of all the goodness
-*** apply best practices (see the guides)
-** introduce cross-version testing
-*** can be as simple as junit parameterized tests driving TestKit
-*** add previous version to the test matrix incrementally
-*** Fix as needed, stop when satisfied or overwhelmed
 --
 
+=== Plugins that can be used across Gradle versions
+
+*Always start with / aim for the latest Gradle version*
+
+[%step]
+* In order to take advantage of all the goodness
+* Apply best practices (see the _Plugin Development_ guides)
+* Do cross-version testing
+
+=== Plugins that can be used across Gradle versions
+
+*Integration testing is key, and easy*
+
+[%step]
+* Introduce cross-version testing
+* Can be as simple as JUnit parameterized tests driving TestKit
+
+=== Plugins that can be used across Gradle versions
+
+*Cross-version testing with JUnit*
+
+[source,kotlin]
+----
+abstract class AbstractPluginTest(val gradleVersion: String) {
+    companion object {
+        @Parameterized.Parameters(name = "Gradle {0}")
+        @JvmStatic
+        fun testedGradleVersions() = listOf("5.3.1", ...., "4.7")
+    }
+
+    fun gradleRunnerFor(vararg arguments: String) =
+        GradleRunner.create()
+            .withGradleVersion(gradleVersion)
+            .withPluginClasspath()
+            .withProjectDir(rootDir)
+            .withArguments(*arguments)
+}
+----
+
+=== Plugins that can be used across Gradle versions
+
+*Incrementally support previous Gradle versions*
+
+[%step]
+* Add Gradle version to the test matrix
+* Fix as needed (see the _Upgrading Gradle_ section of the User Manual)
+* Repeat
+* Stop when satisfied or overwhelmed
+
+=== Plugins that can be used across Gradle versions
+
+*Supporting multiple Gradle versions*
+
+[source,kotlin]
+----
+val myTaskConfiguration: MyTask.() -> Unit = {
+    // ...
+}
+if (GradleVersion.current() >= GradleVersion.version("4.9")) {
+    // Support lazy task registration
+    val myTask = tasks.register("my", MyTask::class.java, myTaskConfiguration)
+    // ...
+} else {
+    // Eager task creation
+    val myTask = tasks.create("my", MyTask::class.java, myTaskConfiguration)
+    // ...
+}
+----
 
