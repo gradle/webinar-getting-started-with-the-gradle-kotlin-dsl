@@ -1,18 +1,45 @@
 [background-color="#01303a"]
 == Organizing build logic
 
-=== Organizing build logic
+===  Patterns for organizing build logic
 
-* Understanding patterns for organizing build logic
 * cross-configuration
 * buildSrc
-** extracting plugin to buildSrc
-** build logic in buildSrc can be tested
 * sharing build logic between builds
 
 [.notes]
 --
 * build script logic can get unwieldy with conventions for Kotlin, Java, Scala, Groovy
+* sharing the plugin with a wider audience
+--
+
+=== Organizing build logic with `buildSrc`
+
+[source,text]
+----
+.
+├── buildSrc
+│   ├── build.gradle.kts
+│   ├── settings.gradle.kts
+│   └── src
+│       └── *
+├── app
+│   ├── build.gradle.kts
+│   └── src
+│       └── *
+├── core
+│   ├── build.gradle.kts
+│   └── src
+│       └── *
+├── gradle
+│   └── *
+├── gradlew.bat
+├── gradlew
+├── build.gradle.kts
+└── settings.gradle.kts
+----
+[.notes]
+--
 ** extract convention plugin into `buildSrc/src/main/kotlin/kotlin-conventions.gradle.kts`
 *** setup `buildSrc` with `kotlin-dsl` plugin
 *** move `kotlin("jvm")` plugin dependency to `buildSrc` / `dependencies`
@@ -23,11 +50,41 @@
 *** `subprojects { apply(plugin = "kotlin-conventions") }` in root
 *** demonstrate introducing warning and failing the build still works
 * quick demo testing buildSrc
-* sharing the plugin with a wider audience
-** extract plugin to separate build
-** to consume the plugin there are two options
-*** include build
-*** get the plugin from a repository
---
 
+--
+=== Sharing build logic between builds
+
+[source,text]
+----
+.
+├── build-logic
+│   ├── build.gradle.kts
+│   ├── settings.gradle.kts
+│   └── src
+│       └── *
+└── webinar-app
+    ├── app
+    │   ├── build.gradle.kts
+    │   └── src
+    │       └── *
+    ├── core
+    │   ├── build.gradle.kts
+    │   └── src
+    │       └── *
+    ├── gradle
+    │   └── *
+    ├── gradlew
+    ├── gradlew.bat
+    ├── build.gradle.kts
+    └── settings.gradle.kts
+----
+[.notes]
+--
+* extract plugin to separate build
+* freeze the project name in settings.gradle.kts
+* add group and version to `build.gradle.kts`
+* to consume the plugin
+** include build
+** set up `gradle.rootProject.buildscript` classpath (dependencies and repositories)
+--
 
