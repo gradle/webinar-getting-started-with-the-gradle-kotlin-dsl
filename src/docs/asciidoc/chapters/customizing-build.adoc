@@ -113,7 +113,7 @@ application {
 ** That should be enough
 --
 
-=== Building the app with the new compiler configuration
+=== Building with the new configuration
 
 [source,kotlin]
 ----
@@ -135,13 +135,13 @@ application {
 }
 tasks {
     compileKotlin {
-        kotlinOptions {
-            allWarningsAsErrors = true
-        }
+        kotlinOptions { allWarningsAsErrors = true }
     }
 }
 ----
 
+[.notes]
+--
 * demo introducing warning by duplicating `return "Hello world"` line
 ** >> navigate to App
 ** >> duplicate line
@@ -149,6 +149,7 @@ tasks {
 ** >> highlight warning output
 ** >> fix the code
 ** >> run again
+--
 
 === What we learned so far
 
@@ -156,10 +157,6 @@ tasks {
 ** configuring extensions and tasks
 ** both contributed by plugins
 ** in other words, plugins extend the Gradle DSL which can then be configured in scripts like the one we just saw
-
-[.notes]
---
---
 
 === Going further: modularizing
 
