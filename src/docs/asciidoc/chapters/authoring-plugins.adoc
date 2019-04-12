@@ -26,16 +26,17 @@
 ----
 enum class MyOption { NONE, FEW, LOTS, ALL }
 
-// The good
+// The good 👍
 interface MyDslType {
 
     fun doSomethingOn(option: MyOption)
 
+    // Optionally
     fun doSomethingOn(option: String) =
         doSomethingOn(MyOption.valueOf(option.toUpperCase()))
 }
 
-// The bad
+// The bad 👎
 interface MyDslType {
     fun doSomethingOn(option: Any)
 }
@@ -49,7 +50,7 @@ interface MyDslType {
 [source,java]
 ----
 interface MyDslType {
-    // The good
+    // The good 👍
     void doThis(org.gradle.api.Action<Type> block);
 }
 ----
@@ -57,7 +58,7 @@ interface MyDslType {
 [source,kotlin]
 ----
 interface MyDslType {
-    // The bad
+    // The bad 👎
     fun doThis(block: Typed.() -> Unit)
 }
 ----
@@ -65,7 +66,7 @@ interface MyDslType {
 [source,groovy]
 ----
 interface MyDslType {
-    // The ugly
+    // The ugly 👹
     def doThis(groovy.lang.Closure block)
 }
 ----
@@ -85,13 +86,6 @@ interface MyDslType {
 * In order to take advantage of all the goodness
 * Apply best practices (see the _Plugin Development_ guides)
 * Do cross-version testing
-
-=== Plugins that can be used across Gradle versions
-
-*Integration testing is key, and easy*
-
-[%step]
-* Introduce cross-version testing
 * Can be as simple as JUnit parameterized tests driving TestKit
 
 === Plugins that can be used across Gradle versions
@@ -104,12 +98,12 @@ abstract class AbstractPluginTest(val gradleVersion: String) {
     companion object {
         @Parameterized.Parameters(name = "Gradle {0}")
         @JvmStatic
-        fun testedGradleVersions() = listOf("5.3.1", ...., "4.7")
+        fun testedGradleVersions() = listOf("5.3.1", ...., "4.7")   ⬅
     }
 
     fun gradleRunnerFor(vararg arguments: String) =
         GradleRunner.create()
-            .withGradleVersion(gradleVersion)
+            .withGradleVersion(gradleVersion)                       ⬅
             .withPluginClasspath()
             .withProjectDir(rootDir)
             .withArguments(*arguments)
@@ -118,7 +112,7 @@ abstract class AbstractPluginTest(val gradleVersion: String) {
 
 === Plugins that can be used across Gradle versions
 
-*Incrementally support previous Gradle versions*
+*Incrementally support Gradle versions*
 
 [%step]
 * Add Gradle version to the test matrix
