@@ -7,7 +7,8 @@
 * With Gradle locally installed
 * `gradle init`
 
-ASCIINEMA DEMO HERE
+[%notitle,background-color="#000000",background-video="images/movies/gradle-init.mp4",background-size="contain",background-video-loop=true,background-video-muted=true]
+=== gradle init
 
 [.notes]
 --
@@ -17,15 +18,21 @@ ASCIINEMA DEMO HERE
 
 === Creating a Gradle Kotlin DSL build
 
+* Without Gradle locally installed
 * From a Web UI
 * https://gradle-initializr.cleverapps.io/
-
-WEBSITE & CURL CAST DEMO HERE
 
 [.notes]
 --
 * the same can be done without having Gradle installed
 * by https://gradle-initializr.cleverapps.io/
+--
+
+[%notitle,background-color="#000000",background-video="images/movies/gradle-initializr.mp4",background-size="contain",background-video-loop=true,background-video-muted=true]
+=== gradle initializr
+
+[.notes]
+--
 * which basically drives `gradle init`
 * and again we choose a Kotlin application using the Gradle Kotlin DSL with latest Gradle
 --
@@ -47,7 +54,6 @@ One-liner without Gradle installed
     && unzip -o webinar-app.zip \
     && rm webinar-app.zip
 ----
-
 
 === Anatomy of the build
 
@@ -228,18 +234,7 @@ application {
 
 === Using the build
 
-[source,text]
-----
-➜ ./gradlew run
-
-> Task :run
-Hello world.
-
-BUILD SUCCESSFUL in 0s
-2 actionable tasks: 2 executed
-----
-
-<demo here>
+*DEMO*
 
 [.notes]
 --
