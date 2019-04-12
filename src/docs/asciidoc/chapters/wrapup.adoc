@@ -1,6 +1,22 @@
 [background-color="#01303a"]
 == Wrap up
 
+=== What we learned
+
+[%step]
+* Creating a Gradle Kotlin DSL build with or without Gradle installed
+* Customizing builds
+[%step]
+** by configuring extensions and tasks contributed by plugins
+** by mixing Kotlin and Groovy build logic
+** by modularizing into projects
+* Organizing build logic using cross-configuration, `buildSrc` and shared plugins
+* Authoring plugins and DSLs
+[%step]
+** that play well with different DSLs and JVM languages
+** that support multiple Gradle versions
+
+
 === Documentation links
 
 * link:https://gradle.github.io/webinar-getting-started-with-the-gradle-kotlin-dsl[This webinar slides]
