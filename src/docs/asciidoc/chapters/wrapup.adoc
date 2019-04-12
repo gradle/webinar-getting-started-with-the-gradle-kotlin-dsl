@@ -16,3 +16,15 @@
 
 [background-color="#01303a"]
 == Questions?
+
+[.notes]
+--
+* Upgrade Kotlin DSL version without upgrading Gradle?
+** NO
+* Distinguish build-logic and production Kotlin version
+** build-logic: let Gradle handle the Kotlin version by using either the `kotlin-dsl` or `embedded-kotlin` plugin
+** production code: business as usual
+* Dependency Management
+** You should refer to the Dependency Management documentation, webinar (they are using the Kotlin DSL)
+** There's nothing special about the Kotlin DSL from a dependency management pov
+--
