@@ -3,9 +3,14 @@
 
 === Documentation links
 
+* link:https://gradle.github.io/webinar-getting-started-with-the-gradle-kotlin-dsl[This webinar slides]
+* link:https://github.com/gradle/webinar-getting-started-with-the-gradle-kotlin-dsl[This webinar source and sample builds]
+
 * link:https://docs.gradle.org/current/userguide/kotlin_dsl.html[Kotlin DSL Primer]
 * link:https://guides.gradle.org/migrating-build-logic-from-groovy-to-kotlin/[Kotlin DSL Migration Guide]
+
 * link:https://docs.gradle.org/current/userguide/userguide.html[Gradle User Manual]
+* link:https://gradle.org/guides/?q=Plugin%20Development[Plugin development tutorials]
 * link:https://gradle.com/blog/dependency-management-with-gradle-fundamentals/[Dependency Management with Gradle Part 1 – Fundamentals]
 
 
