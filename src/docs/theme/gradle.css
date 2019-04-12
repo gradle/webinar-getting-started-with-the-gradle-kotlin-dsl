@@ -4,6 +4,7 @@
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro);
 
 /*********************************************
  * GLOBAL STYLES
@@ -211,7 +212,7 @@ section.has-dark-background h3 {
     width: 90%;
     margin: 20px auto;
     text-align: left;
-    font-size: 0.55em;
+    font-size: 0.35em;
     font-family: monospace;
     line-height: 1.2em;
     word-wrap: break-word;
@@ -219,7 +220,7 @@ section.has-dark-background h3 {
 }
 
 .reveal code {
-    font-family: monospace;
+    font-family: "Source Code Pro";
 }
 
 .reveal pre code {
@@ -228,6 +229,8 @@ section.has-dark-background h3 {
     overflow: auto;
     max-height: 400px;
     word-wrap: normal;
+    font-size: 0.32em;
+    line-height: 1.1em;
 }
 
 .reveal table {
