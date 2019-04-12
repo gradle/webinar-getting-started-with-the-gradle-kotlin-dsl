@@ -232,16 +232,30 @@ application {
 * and as you might expect, the source code for the application and tests in the standard layout
 --
 
-=== Using the build
+=== Running the build
+
+*From the command line*
 
 *DEMO*
 
 [.notes]
 --
-* record the bootstrapping process
-** download the Gradle distro
-** start daemon
-** >> run again with `./gradlew check` to show it's cached
+* command line first
 * and here we just use the Gradle wrapper to execute the `run` task provided by the `application` plugin
 --
+
+=== Working with the build
+
+*Using an IDE*
+
+*DEMO*
+
+[.notes]
+--
+* POLL about IDE
+* show importing the build in an IDE
+* show run anything
+* mention the Gradle runner is now the default
+--
+
 

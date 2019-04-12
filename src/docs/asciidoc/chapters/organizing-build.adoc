@@ -38,6 +38,7 @@
 ├── build.gradle.kts
 └── settings.gradle.kts
 ----
+
 [.notes]
 --
 ** extract convention plugin into `buildSrc/src/main/kotlin/kotlin-conventions.gradle.kts`
@@ -50,8 +51,17 @@
 *** `subprojects { apply(plugin = "kotlin-conventions") }` in root
 *** demonstrate introducing warning and failing the build still works
 * quick demo testing buildSrc
-
 --
+
+=== What we learned
+
+[%step]
+* `buildSrc` is the conventional build for build logic
+* the `kotlin-dsl` plugin brings the Gradle Kotlin DSL support to Kotlin source sets
+* Gradle Kotlin DSL scripts in Kotlin source sets are exposed as Gradle plugins
+* see the _Kotlin DSL Primer_ in the User Manual for more information
+
+
 === Sharing build logic between builds
 
 [source,text]

@@ -20,8 +20,16 @@ image::who-s-who.png[height=250,width=586]
 
 Gradle Kotlin DSL Team
 
+== Who are you?
+
+* How are you using Gradle?
+* What is your primary programming language?
 
 include::chapters/about-gradle.adoc[]
+
+
+[background-color="#01303a"]
+== What type of application are you building?
 
 
 [background-color="#01303a"]
@@ -49,6 +57,3 @@ include::chapters/wrapup.adoc[]
 [background-color="#01303a"]
 == Thank you!
 
-
-// [%notitle,background-video="...",background-video-loop=true,background-video-muted=true]
-// === Video title

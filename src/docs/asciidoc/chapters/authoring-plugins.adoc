@@ -6,8 +6,17 @@
 *Sharing plugins with a wider audience*
 
 [%step]
+* Publishing plugins
 * DSLs that play well with both Kotlin, Groovy and other JVM languages
 * Plugins that can be used across Gradle versions
+
+=== Publishing plugins
+
+[%step]
+* To the Gradle Plugin Portal or an internal repository
+* Well covered in the _Plugin Development_ guides
+* Doesn't prevent the included build workflow
+* Which is orthogonal to choosing mono-repo vs. multi-repo
 
 === DSLs that play well with JVM languages
 
