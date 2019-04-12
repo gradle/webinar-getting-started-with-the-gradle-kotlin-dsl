@@ -118,6 +118,7 @@ class AsciidoctorPresentationPlugin : Plugin<Project> {
 
                 attributes(mapOf(
                         "source-highlighter" to extension.highlighter.get(),
+                        "highlightjs-theme" to "github",
                         "imagesdir" to "./images",
                         "buildsdir" to "../../../scripts",
                         "toc" to "left",
