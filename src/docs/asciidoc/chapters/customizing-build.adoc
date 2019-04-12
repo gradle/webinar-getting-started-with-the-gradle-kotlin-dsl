@@ -141,6 +141,12 @@ application {
 * split the build into core and app
 ** `apply false` in the root project to control the version of the plugin in a single place
 **  duplicate `compileKotlin` configuration logic
+--
+
+=== Going further: deduplicating build logic
+
+[.notes]
+--
 * dedupe the logic by moving the duplicated compileTask configuration into the root build
 ** cross `subprojects` configuration with `val compileKotlin by ...`
 --
