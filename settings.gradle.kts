@@ -1,2 +1,2 @@
-rootProject.name = "webinar-dep-mgmt-part-1"
+rootProject.name = "webinar-getting-started-kotlin-dsl"
 
