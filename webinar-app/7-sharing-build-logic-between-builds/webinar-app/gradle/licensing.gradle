@@ -1,0 +1,15 @@
+enum License { GPL, LGPL }
+
+class Licensing {
+    License license = License.LGPL
+
+    void license(License license) {
+        this.license = license
+    }
+}
+
+extensions.create("licensing", Licensing)
+
+afterEvaluate {
+    println("Project ${project.path} is licensed under the ${project.licensing.license}")
+}
