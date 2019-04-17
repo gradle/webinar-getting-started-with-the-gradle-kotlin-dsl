@@ -20,7 +20,8 @@
 === Documentation links
 
 * link:https://gradle.github.io/webinar-getting-started-with-the-gradle-kotlin-dsl[This webinar slides]
-* link:https://github.com/gradle/webinar-getting-started-with-the-gradle-kotlin-dsl[This webinar source and sample builds]
+* link:https://github.com/gradle/webinar-getting-started-with-the-gradle-kotlin-dsl/tree/master/webinar-app[This webinar sample builds]
+* link:https://github.com/gradle/webinar-getting-started-with-the-gradle-kotlin-dsl[This webinar source]
 
 * link:https://docs.gradle.org/current/userguide/kotlin_dsl.html[Kotlin DSL Primer]
 * link:https://guides.gradle.org/migrating-build-logic-from-groovy-to-kotlin/[Kotlin DSL Migration Guide]
